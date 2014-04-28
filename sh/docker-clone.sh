@@ -5,7 +5,7 @@
 echo "Running docker-clone.sh:"
 
 # Make sure source directory exists.
-if [ ! -d "$1" ]; then
+if [ ! "$1" ]; then
     msg=$1
     msg+=" was not found!"
     echo "$msg" 1>&2
