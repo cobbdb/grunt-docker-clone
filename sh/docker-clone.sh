@@ -8,9 +8,14 @@ echo "Running docker-clone.sh:"
 if [ ! -d "docs-clone" ]; then
     echo "- /docs-clone/ was not found. Cloning..."
     repourl=$(git config --get remote.origin.url)
-    git clone $repourl -b $2 docs-clone
+    if [ -z "$repourl" ]
+        echo "No origin set for this repository!" 1>&2
+        exit 1
+    else
+        git clone $repourl -b $2 docs-clone
+    fi
 elif [ ! -d "docs-clone/.git" ]; then
-    echo "- /docs-clone/ was found, but is not a git repository." 1>&2
+    echo "/docs-clone/ was found, but is not a git repository." 1>&2
     exit 1
 fi
 
