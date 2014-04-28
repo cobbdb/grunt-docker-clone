@@ -1,0 +1,33 @@
+{
+  "name": "grunt-docker-clone",
+  "version": "1.0.0",
+  "description": "Run a Docker build to a special branch.",
+  "main": "sh/docker-clone.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cobbdb/grunt-docker-clone.git"
+  },
+  "keywords": [
+    "docker",
+    "pages",
+    "branch",
+    "automation",
+    "documentation",
+    "grunt",
+    "contrib"
+  ],
+  "author": "Dan Cobb <cobbdb@gmail.com> (http://www.github.com/cobbdb)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cobbdb/grunt-docker-clone/issues"
+  },
+  "homepage": "https://github.com/cobbdb/grunt-docker-clone",
+  "dependencies": {
+    "docker": "~0.2.10",
+    "grunt": "~0.4.4",
+    "grunt-exec": "~0.4.5"
+  }
+}
