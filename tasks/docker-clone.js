@@ -20,8 +20,8 @@ module.exports = function (grunt) {
             grunt.config.set('exec.docker-clone', {
                 cmd: path + '<% inpath %> <% branch %>'
             });
-            grunt.task.run('grunt-exec:docker-clone');
-            this.requires('grunt-exec');
+            grunt.task.run('exec:docker-clone');
+            //this.requires('exec');
 
             grunt.verbose.ok();
         }
