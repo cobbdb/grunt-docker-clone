@@ -6,13 +6,12 @@ echo "Running docker-clone.sh:"
 
 # Clone the repo if not already present.
 if [ ! -d "docs-clone" ]; then
-    if [ ! -d "docs-clone/.git" ]; then
-        echo "- /docs-clone/ is not a git repository!" 1>&2
-        exit 1
-    fi
     echo "- /docs-clone/ was not found. Cloning..."
     repourl=$(git config --get remote.origin.url)
     git clone $repourl -b $2 docs-clone
+elif [ ! -d "docs-clone/.git" ]; then
+    echo "- /docs-clone/ was found, but is not a git repository." 1>&2
+    exit 1
 fi
 
 # Clear out existing files.
