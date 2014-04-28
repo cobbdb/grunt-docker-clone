@@ -4,7 +4,7 @@
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-exec');
     grunt.registerMultiTask('docker-clone', 'Build docker to a special docs branch.', function () {
-        grunt.config.requires('src');
+        grunt.config.requires('inpath');
         grunt.config.requires('branch');
 
         var path = require.resolve('grunt-docker-clone');
