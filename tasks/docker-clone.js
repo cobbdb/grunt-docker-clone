@@ -7,6 +7,7 @@ module.exports = function (grunt) {
         'docker-clone',
         'Build docker to a special docs branch.',
         function () {
+            console.log(JSON.stringify(this.data, null, 4));
             if (!(this.data.src && this.data.branch)) {
                 grunt.log.error('Missing required inpath and branch settings from config.');
             }
