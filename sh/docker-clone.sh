@@ -8,7 +8,7 @@ echo "Running docker-clone.sh:"
 if [ ! -d "docs-clone" ]; then
     echo "- /docs-clone/ was not found. Cloning..."
     repourl=$(git config --get remote.origin.url)
-    if [ -z "$repourl" ]
+    if [ -z "$repourl" ]; then
         echo "No origin set for this repository!" 1>&2
         exit 1
     else
