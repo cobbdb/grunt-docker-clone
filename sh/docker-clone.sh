@@ -38,7 +38,7 @@ node_modules/.bin/docker -i $1 -o docs-clone
 # Push the new docs.
 echo "- Updating docs branch."
 docsmsg = "docker-bld: "
-docsmsg += date
+docsmsg+=date
 git --git-dir=docs-clone/.git --work-tree=docs-clone add -A
 git --git-dir=docs-clone/.git --work-tree=docs-clone commit -m docsmsg
 git --git-dir=docs-clone/.git --work-tree=docs-clone push -f origin $2

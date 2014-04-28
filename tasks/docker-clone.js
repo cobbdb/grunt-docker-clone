@@ -18,13 +18,13 @@ module.exports = function (grunt) {
             }
 
             grunt.config.set('exec.docker-clone', {
-                inpath: this.data.inpath,
-                branch: this.data.branch,
-                cmd: path + ' <%= inpath %> <%= branch %>'
+                cmd: grunt.template.process('<%= path %> <%= inpath %> <%= branch %>', {
+                    path: path,
+                    inpath: this.data.inpath,
+                    branch: this.data.branch
+                })
             });
             grunt.task.run('exec:docker-clone');
-            //this.requires('exec');
-
             grunt.verbose.ok();
         }
     );
