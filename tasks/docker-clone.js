@@ -4,8 +4,8 @@
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-exec');
     grunt.registerMultiTask('docker-clone', 'Build docker to a special docs branch.', function () {
-        grunt.config.requires('inpath');
-        grunt.config.requires('branch');
+        this.requiresConfig('inpath');
+        this.requiresConfig('branch');
 
         var path = require.resolve('grunt-docker-clone');
         if (!path) {
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
             cmd: path + '<% src %> <% branch %>'
         });
         grunt.task.run('grunt-exec:docker-clone');
-        grunt.task.requires('grunt-exec');
+        this.requires('grunt-exec');
 
         grunt.verbose.ok();
     });
