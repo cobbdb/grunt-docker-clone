@@ -19,7 +19,13 @@ if [ ! -d "docs-clone" ]; then
         exit 1
     else
         git clone $repourl docs-clone
-        git checkout --git-dir=docs-clone/.git --work-tree=docs-clone -b cmg-pages
+        (
+            cd docs-clone || {
+                echo "Could not find /docs-clone/!" 1>&2
+                exit 1
+            }
+            git checkout -b cmg-pages
+        )
     fi
 elif [ ! -d "docs-clone/.git" ]; then
     echo "/docs-clone/ was found, but is not a git repository." 1>&2
@@ -39,6 +45,12 @@ node_modules/.bin/docker -i $1 -o docs-clone || {
 
 # Push the new docs.
 echo "- Updating docs branch."
-git --git-dir=docs-clone/.git --work-tree=docs-clone add -A
-git --git-dir=docs-clone/.git --work-tree=docs-clone commit -m "docker-bld: $(date)"
-git --git-dir=docs-clone/.git --work-tree=docs-clone push -f origin $2
+(
+    cd docs-clone || {
+        echo "Could not find /docs-clone/!" 1>&2
+        exit 1
+    }
+    git add -A
+    git commit -m "docker-bld: $(date)"
+    git push -f origin $2
+)
