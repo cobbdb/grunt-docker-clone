@@ -19,7 +19,7 @@ module.exports = function (grunt) {
             }
 
             grunt.config.set('exec.docker-clone', {
-                cmd: grunt.template.process('<%= path %> <%= dir %> <%= branch %>', {
+                cmd: grunt.template.process('sh <%= path %> <%= dir %> <%= branch %>', {
                     data: {
                         path: path,
                         dir: this.data.dir,
