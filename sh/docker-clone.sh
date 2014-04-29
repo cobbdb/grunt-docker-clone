@@ -5,10 +5,12 @@
 echo "Running docker-clone.sh:"
 
 # Make sure source directory exists.
+echo ">>>>>> looking for $1"
 if [ ! "$1" ]; then
     echo "$1 was not found!" 1>&2
     exit 1
 fi
+echo ">>>>>> now using $1"
 
 # Clone the repo if not already present.
 if [ ! -d "docs-clone" ]; then
