@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                 grunt.log.error('Cannot find grunt-docker.sh!');
                 return false;
             }
-
+console.log('inpath is: ' + this.data.inpath);
             grunt.config.set('exec.docker-clone', {
                 cmd: grunt.template.process('<%= path %> <%= inpath %> <%= branch %>', {
                     data: {
