@@ -31,7 +31,8 @@ fi
 # Clear out existing files.
 echo "- Removing existing doc files."
 rm -rf docs-clone/*
-
+echo ">>>>>>>>>>>>> looking for"
+echo "$1"
 # Run Docker against the source folder
 echo "- Running Docker build with: docker -i \"$1\" -o docs-clone"
 node_modules/.bin/docker -i "$1" -o docs-clone || {
