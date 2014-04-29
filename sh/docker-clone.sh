@@ -34,7 +34,10 @@ rm -rf docs-clone/*
 
 # Run Docker against the source folder
 echo "- Running Docker build with: docker -i $1 -o docs-clone"
-node_modules/.bin/docker -i $1 -o docs-clone
+node_modules/.bin/docker -i $1 -o docs-clone || {
+    echo "Docker build failed." 1>&2
+    exit 1
+}
 
 # Push the new docs.
 echo "- Updating docs branch."
