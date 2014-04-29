@@ -18,10 +18,8 @@ if [ ! -d "docs-clone" ]; then
         echo "No origin set for this repository!" 1>&2
         exit 1
     else
-        git clone $repourl -b $2 docs-clone || {
-            echo "Could not find branch $2 on origin." 1>&2
-            exit 1
-        }
+        git clone $repourl docs-clone
+        git checkout --git-dir=docs-clone/.git --work-tree=docs-clone -b cmg-pages
     fi
 elif [ ! -d "docs-clone/.git" ]; then
     echo "/docs-clone/ was found, but is not a git repository." 1>&2
