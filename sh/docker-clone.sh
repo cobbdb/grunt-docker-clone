@@ -44,5 +44,5 @@ echo "- Updating docs branch."
 docsmsg="docker-bld: "
 docsmsg+=date
 git --git-dir=docs-clone/.git --work-tree=docs-clone add -A
-git --git-dir=docs-clone/.git --work-tree=docs-clone commit -m docsmsg
+git --git-dir=docs-clone/.git --work-tree=docs-clone commit -m $docsmsg
 git --git-dir=docs-clone/.git --work-tree=docs-clone push -f origin $2
