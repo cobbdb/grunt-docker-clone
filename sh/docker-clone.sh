@@ -1,6 +1,8 @@
 # Run docker against source files and
 # populate a special docs branch.
 # Ex) docker-clone src gh-pages
+# $1 == source directory
+# $2 == docs branch name
 
 echo "Running docker-clone.sh:"
 
@@ -12,25 +14,28 @@ fi
 
 # Clone the repo if not already present.
 if [ ! -d "docs-clone" ]; then
-    echo "- /docs-clone/ was not found. Cloning..."
+    echo "- docs-clone was not found. Cloning..."
     repourl=$(git config --get remote.origin.url)
     if [ -z "$repourl" ]; then
         echo "No origin set for this repository!" 1>&2
         exit 1
     else
         git clone $repourl docs-clone
-        (
-            cd docs-clone || {
-                echo "Could not find /docs-clone/!" 1>&2
-                exit 1
-            }
-            git checkout -b cmg-pages
-        )
     fi
 elif [ ! -d "docs-clone/.git" ]; then
-    echo "/docs-clone/ was found, but is not a git repository." 1>&2
+    echo "docs-clone was found, but is not a git repository." 1>&2
     exit 1
 fi
+
+# Checkout the docs branch.
+(
+    echo "Checking out branch $2."
+    cd docs-clone || {
+        echo "Could not find docs-clone!" 1>&2
+        exit 1
+    }
+    git checkout -b $2
+)
 
 # Clear out existing files.
 echo "- Removing existing doc files."
@@ -47,7 +52,7 @@ node_modules/.bin/docker -i $1 -o docs-clone || {
 echo "- Updating docs branch."
 (
     cd docs-clone || {
-        echo "Could not find /docs-clone/!" 1>&2
+        echo "Could not find docs-clone!" 1>&2
         exit 1
     }
     git add -A

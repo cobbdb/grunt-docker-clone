@@ -1,6 +1,6 @@
 {
   "name": "grunt-docker-clone",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Run a Docker build to a special branch.",
   "main": "sh/docker-clone.sh",
   "scripts": {
