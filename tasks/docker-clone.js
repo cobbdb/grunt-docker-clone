@@ -7,8 +7,8 @@ module.exports = function (grunt) {
         'docker-clone',
         'Build docker to a special docs branch.',
         function () {
-            if (!(this.data.inpath && this.data.branch)) {
-                grunt.log.error('Missing required inpath and branch settings from config.');
+            if (!(this.data.dir && this.data.branch)) {
+                grunt.log.error('Missing required dir and branch settings from config.');
             }
 
             var path = require.resolve('grunt-docker-clone');
@@ -18,10 +18,10 @@ module.exports = function (grunt) {
             }
 
             grunt.config.set('exec.docker-clone', {
-                cmd: grunt.template.process('<%= path %> "<%= inpath %>" <%= branch %>', {
+                cmd: grunt.template.process('<%= path %> <%= dir %> <%= branch %>', {
                     data: {
                         path: path,
-                        inpath: this.data.inpath,
+                        dir: this.data.dir,
                         branch: this.data.branch
                     }
                 })
