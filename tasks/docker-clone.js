@@ -9,6 +9,7 @@ module.exports = function (grunt) {
         function () {
             if (!(this.data.dir && this.data.branch)) {
                 grunt.log.error('Missing required dir and branch settings from config.');
+                return false;
             }
 
             var path = require.resolve('grunt-docker-clone');

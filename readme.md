@@ -5,6 +5,10 @@ Run a Docker build to a special branch.
     $ npm install grunt-docker-clone
 
 -------------
+Docker-clone runs a Docker build into a branch of the same repo.
+Think GitHub's gh-pages, where there is a special branch of the same
+repo just for documentation/website data.
+
 ## Task Configuration
 There are only two options needed to configure your docker build:
 
