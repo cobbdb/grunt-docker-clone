@@ -17,6 +17,13 @@ module.exports = function (grunt) {
                 return false;
             }
 console.log('inpath is: ' + this.data.inpath);
+console.log('calling command: ' + grunt.template.process('<%= path %> <%= inpath %> <%= branch %>', {
+                    data: {
+                        path: path,
+                        inpath: this.data.inpath,
+                        branch: this.data.branch
+                    }
+                }));
             grunt.config.set('exec.docker-clone', {
                 cmd: grunt.template.process('<%= path %> <%= inpath %> <%= branch %>', {
                     data: {
