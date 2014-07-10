@@ -1,6 +1,6 @@
 {
   "name": "grunt-docker-clone",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Run a Docker build to a special branch.",
   "main": "sh/docker-clone.sh",
   "scripts": {
@@ -30,8 +30,8 @@
   "homepage": "https://github.com/cobbdb/grunt-docker-clone",
   "dependencies": {},
   "peerDependencies": {
-    "docker": "~0.2.10",
-    "grunt": "~0.4.4",
-    "grunt-exec": "~0.4.5"
+    "grunt-exec": "~0.4.5",
+    "grunt": "~0.4.5",
+    "docker": "~0.2.13"
   }
 }
