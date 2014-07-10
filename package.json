@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/cobbdb/grunt-docker-clone.git"
   },
+  "os": [
+    "!win32"
+  ],
   "keywords": [
     "docker",
     "pages",
