@@ -41,7 +41,7 @@ fi
 echo "- Removing existing doc files."
 rm -rf docs-clone/*
 
-# Run Docker against the source folder
+# Run Docker against the source folder.
 echo "- Running Docker build with: docker -i $1 -o docs-clone"
 node_modules/.bin/docker -i $1 -o docs-clone || {
     echo "Docker build failed." 1>&2
@@ -55,6 +55,15 @@ echo "- Updating docs branch."
         echo "Could not find docs-clone!" 1>&2
         exit 1
     }
+
+    # Create an index.html page if requested.
+    if [ -n "$3" ]; then
+        echo "- Creating index.html from $3"
+        cp $3 index.html
+    fi
+
+    # Push to origin.
+    echo "- Pushing to origin/$2"
     git add -A
     git commit -m "docker-bld: $(date)"
     git push -f origin $2
