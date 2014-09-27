@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                         path: path,
                         dir: this.data.dir,
                         branch: this.data.branch,
-                        index: this.data.index || '';
+                        index: this.data.index || ''
                     }
                 })
             });
