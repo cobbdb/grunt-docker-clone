@@ -18,12 +18,14 @@ module.exports = function (grunt) {
                 return false;
             }
 
+            var cmdStr = 'sh <%= path %> <%= dir %> <%= branch %> <%= index %>';
             grunt.config.set('exec.docker-clone', {
-                cmd: grunt.template.process('sh <%= path %> <%= dir %> <%= branch %>', {
+                cmd: grunt.template.process(cmdStr, {
                     data: {
                         path: path,
                         dir: this.data.dir,
-                        branch: this.data.branch
+                        branch: this.data.branch,
+                        index: this.data.index || '';
                     }
                 })
             });
